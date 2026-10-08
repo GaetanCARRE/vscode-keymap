@@ -60,3 +60,29 @@ nix-instantiate --eval --strict --json keybindings.nix > keybindings.json
 You can then copy `keybindings.json` to `~/.config/Code/User/keybindings.json`.
 
 Reference: [Home Manager — VS Code](https://home-manager.dev/manual/unstable/options/home-manager/programs/vscode.html).
+
+## GNOME / Forge configuration (NixOS)
+
+`gnome-forge.nix` stores the supplied keyd and GNOME/Forge configuration as a
+separate NixOS module. Import it in your NixOS system configuration:
+
+```nix
+{
+  imports = [ ./vscode-keymap/gnome-forge.nix ];
+}
+```
+
+This module enables keyd, maps Caps Lock to a Hyper layer, sets four static
+workspaces, removes GNOME application shortcuts for keys 1–4, and configures
+workspace switching, moving windows, and Forge focus navigation with h/j/k/l.
+GNOME and the Forge extension must already be installed and enabled; this module
+only adds their settings. It is independent of the VS Code Home Manager setup.
+
+The original modifiers are preserved: `hyper:C-A-S-M` includes Shift, but
+workspace switching and Forge focus shortcuts use Control+Alt+Super without Shift.
+Caps Lock+1–4 therefore matches the window-moving shortcuts rather than the
+workspace-switching shortcuts; the Forge focus shortcuts do not match the Hyper
+layer. To use Caps Lock for switching/focus and Caps Lock+Shift for moving windows,
+change the layer header to `hyper:C-A-M`.
+
+Reference: [keyd modifier layers](https://github.com/rvaiya/keyd/blob/master/docs/keyd.scd).
