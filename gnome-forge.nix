@@ -1,5 +1,5 @@
 # NixOS module for keyd, GNOME workspaces, and Forge keybindings.
-# Preserves the supplied configuration, including the Hyper modifier choice.
+# Caps Lock holds Control+Alt+Super; add Shift to move windows between workspaces.
 { ... }:
 {
   services.keyd = {
@@ -8,7 +8,7 @@
       ids = [ "*" ];
       settings = {
         main.capslock = "layer(hyper)";
-        "hyper:C-A-S-M" = {};
+        "hyper:C-A-M" = {};
       };
     };
   };

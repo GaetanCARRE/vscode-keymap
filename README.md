@@ -78,11 +78,10 @@ workspace switching, moving windows, and Forge focus navigation with h/j/k/l.
 GNOME and the Forge extension must already be installed and enabled; this module
 only adds their settings. It is independent of the VS Code Home Manager setup.
 
-The original modifiers are preserved: `hyper:C-A-S-M` includes Shift, but
-workspace switching and Forge focus shortcuts use Control+Alt+Super without Shift.
-Caps Lock+1–4 therefore matches the window-moving shortcuts rather than the
-workspace-switching shortcuts; the Forge focus shortcuts do not match the Hyper
-layer. To use Caps Lock for switching/focus and Caps Lock+Shift for moving windows,
-change the layer header to `hyper:C-A-M`.
+The `hyper:C-A-M` layer holds Control+Alt+Super without Shift:
+
+- Caps Lock + 1–4 switches to the corresponding workspace.
+- Caps Lock + Shift + 1–4 moves the active window to that workspace.
+- Caps Lock + h/j/k/l focuses the window to the left/down/up/right in Forge.
 
 Reference: [keyd modifier layers](https://github.com/rvaiya/keyd/blob/master/docs/keyd.scd).
